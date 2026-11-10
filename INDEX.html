@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isla La Porcada · Elite Mini Dossier · Ecoresort la Porcada by Aman</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#0A0B0D', dark: '#121418', card: '#181A20', border: '#2A2D36',
+              gold: '#D4AF37', goldLight: '#F3E5AB', goldDark: '#997A15',
+              sand: '#E6DFD5', muted: '#8E95A5',
+              burgundy: '#6b1f2a', ok: '#234e35'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Inter"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0A0B0D; color: #E6DFD5; font-family: 'Inter', sans-serif; }
+    .font-serif { font-family: 'Cormorant Garamond', serif; }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF0CA 0%, #D4AF37 50%, #997A15 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .glass-panel { background: rgba(24, 26, 32, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(212, 175, 55, 0.15); }
+    .glass-strong { background: rgba(24, 26, 32, 0.92); backdrop-filter: blur(20px); border: 1px solid rgba(212, 175, 55, 0.25); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0A0B0D; }
+    ::-webkit-scrollbar-thumb { background: #2A2D36; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+    input[type=range] { accent-color: #D4AF37; }
+    .section-anchor { scroll-margin-top: 90px; }
+    .es-text { display: block; } .en-text { display: none; }
+    body.lang-en .es-text { display: none; } body.lang-en .en-text { display: block; }
+    .es-text.inline { display: inline; } .en-text.inline { display: none; }
+    body.lang-en .es-text.inline { display: none; } body.lang-en .en-text.inline { display: inline; }
+    .print-header { display: none; }
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body { background: #0A0B0D !important; color: #E6DFD5 !important; }
+      #accessModal, .topbar-actions .btn-print, .lang-toggle, #mainContent nav { display: none !important; }
+      #mainContent { opacity: 1 !important; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      .glass-panel, .glass-strong { background: #181A20 !important; }
+      section { page-break-inside: avoid; }
+      .chart-card canvas { max-width: 100% !important; height: auto !important; }
+      .print-header { display: flex !important; justify-content: space-between; padding: 0 0 12px 0; border-bottom: 2px solid #D4AF37; margin-bottom: 12px; }
+      #overview { min-height: auto !important; padding-top: 40px !important; padding-bottom: 30px !important; }
+      #overview .absolute { display: none !important; }
+      #overview .relative.z-10 { position: static !important; }
+      .animate-pulse, .animate-bounce { animation: none !important; }
+      .scale-105 { transform: none !important; }
+      .text-white { color: #ffffff !important; }
+      .text-brand-gold, .text-brand-goldLight { color: #D4AF37 !important; }
+      .text-brand-sand { color: #E6DFD5 !important; }
+      .text-brand-muted { color: #8E95A5 !important; }
+      .glass-panel { border: 1px solid rgba(212, 175, 55, 0.3) !important; }
+      #nda form input, #nda form textarea, #nda form select, #nda form button { display: none !important; }
+      #nda form label { display: block !important; margin-top: 12px; padding: 8px 0; border-bottom: 1px solid rgba(212,175,55,0.2); }
+    }
+  </style>
+</head>
+<body class="bg-brand-black text-brand-sand antialiased selection:bg-brand-gold selection:text-black lang-es">
+
+  <!-- MODAL ACCESO PRIVADO -->
+  <div id="accessModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-xl transition-opacity duration-700">
+    <div class="max-w-md w-full mx-4 p-8 glass-strong rounded-2xl text-center border border-brand-gold/30 shadow-2xl relative overflow-hidden">
+      <div class="absolute -top-24 -left-24 w-48 h-48 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="inline-flex p-3 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold mb-4">
+        <i data-lucide="shield-lock" class="w-8 h-8"></i>
+      </div>
+      <span class="block text-xs uppercase tracking-[0.3em] text-brand-gold font-medium mb-1">
+        <span class="es-text">Invitación Privada · Off-Market</span>
+        <span class="en-text">Private Invitation · Off-Market</span>
+      </span>
+      <h2 class="text-3xl font-serif text-white font-light tracking-wide mb-3">Ecoresort la Porcada</h2>
+      <p class="text-xs text-brand-muted mb-6 font-light leading-relaxed">
+        <span class="es-text">El Mar a Lago del Siglo XXI, diseñado por Denniston Architects y operado por Aman. Memorando privado exclusivo para Family Offices y Banqueros Privados.</span>
+        <span class="en-text">The 21st Century Mar a Lago, designed by Denniston Architects and operated by Aman. Private memorandum exclusive to Family Offices and Private Bankers.</span>
+      </p>
+      <form id="accessForm" class="space-y-4">
+        <div>
+          <input type="password" id="passcode" placeholder="PORCADA2026" required
+            class="w-full px-4 py-3 bg-brand-dark border border-brand-border rounded-xl text-center text-white tracking-widest focus:outline-none focus:border-brand-gold transition text-sm">
+        </div>
+        <button type="submit"
+          class="w-full py-3.5 bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-medium text-sm tracking-widest uppercase rounded-xl hover:opacity-90 transition shadow-lg shadow-brand-gold/10 flex items-center justify-center gap-2">
+          <span class="es-text">Acceder al Dossier</span>
+          <span class="en-text">Enter Dossier</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </form>
+      <div class="mt-6 pt-4 border-t border-brand-border/50 text-[11px] text-brand-muted flex justify-between items-center">
+        <span>Ref: LP-VIP-2026</span>
+        <button onclick="fillDemoCode()" class="text-brand-gold hover:underline">
+          <span class="es-text">Usar código DEMO</span>
+          <span class="en-text">Use DEMO code</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER IMPRESIÓN -->
+  <div class="print-header text-brand-sand">
+    <div class="font-serif text-sm text-brand-gold">ISLA LA PORCADA <span class="text-brand-muted">·</span> ECORESORT LA PORCADA BY AMAN <span class="text-brand-muted">·</span> ELITE MINI DOSSIER</div>
+    <div class="text-[10px] text-brand-muted uppercase tracking-widest">
+      <span class="es-text inline">Fecha:</span><span class="en-text inline">Date:</span> <strong id="printDate" class="text-brand-gold"></strong>
+    </div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div id="mainContent" class="opacity-0 transition-opacity duration-1000">
+
+    <!-- TOPBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-40 bg-brand-black/80 backdrop-blur-md border-b border-brand-border/50">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="images/logo.png" alt="Isla La Porcada" class="w-10 h-10 rounded-full object-cover border border-brand-gold/40">
+          <div>
+            <span class="font-serif text-lg text-white tracking-wide block leading-none">ISLA LA PORCADA</span>
+            <span class="text-[9px] uppercase tracking-[0.25em] text-brand-gold">Ecoresort by Aman</span>
+          </div>
+        </div>
+        <div class="hidden lg:flex items-center gap-7 text-xs uppercase tracking-widest text-brand-muted">
+          <a href="#vision" class="hover:text-brand-gold transition"><span class="es-text">Visión</span><span class="en-text">Vision</span></a>
+          <a href="#aman-denniston" class="hover:text-brand-gold transition">Aman × Denniston</a>
+          <a href="#membership" class="hover:text-brand-gold transition"><span class="es-text">Membresía</span><span class="en-text">Membership</span></a>
+          <a href="#partnership" class="hover:text-brand-gold transition"><span class="es-text">Comisión</span><span class="en-text">Commission</span></a>
+          <a href="#spv" class="hover:text-brand-gold transition">SPV</a>
+          <a href="#nda" class="hover:text-brand-gold transition">NDA</a>
+        </div>
+        <div class="topbar-actions flex items-center gap-3">
+          <div class="lang-toggle inline-flex bg-brand-dark border border-brand-gold/40 rounded-full p-1 gap-1">
+            <button type="button" data-lang="es" class="px-3 py-1 text-[11px] font-bold tracking-widest rounded-full active">ES</button>
+            <button type="button" data-lang="en" class="px-3 py-1 text-[11px] font-bold tracking-widest rounded-full text-brand-muted">EN</button>
+          </div>
+          <button type="button" id="btnPrint" class="btn-print inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-bold text-[11px] tracking-widest uppercase rounded-full hover:opacity-90 transition">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="w-3.5 h-3.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span>PDF</span>
+          </button>
+          <a href="#nda" class="hidden md:inline-block px-4 py-2 text-xs uppercase tracking-widest border border-brand-gold/50 text-brand-gold hover:bg-brand-gold hover:text-black transition rounded-lg font-medium">
+            <span class="es-text">Solicitar NDA</span><span class="en-text">Request NDA</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="overview" class="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img src="images/bonoporcada.png" alt="Isla La Porcada" class="w-full h-full object-cover opacity-30 scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/75 to-transparent"></div>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs uppercase tracking-[0.3em] mb-6">
+          <i data-lucide="gem" class="w-3.5 h-3.5"></i>
+          <span class="es-text">Activo Off-Market · Mar a Lago del Siglo XXI</span>
+          <span class="en-text">Off-Market Asset · 21st Century Mar a Lago</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-serif text-white font-light tracking-tight leading-tight max-w-5xl mx-auto mb-6">
+          <span class="es-text">Isla La Porcada · <span class="gold-gradient-text italic">Mar a Lago del Siglo XXI</span></span>
+          <span class="en-text">Isla La Porcada · <span class="gold-gradient-text italic">21st Century Mar a Lago</span></span>
+        </h1>
+        <p class="text-base md:text-lg text-brand-muted max-w-3xl mx-auto font-light leading-relaxed mb-12">
+          <span class="es-text">El eco-resort ultra-prime de Panamá, diseñado por <strong class="text-brand-sand font-normal">Denniston Architects</strong> (Jean-Michel Gathy) y operado por el estándar global de ultra-lujo <strong class="text-brand-sand font-normal">Aman</strong>. Sólo <strong class="text-brand-gold font-normal">5.000 Membresías Executive</strong> representan el <strong class="text-brand-gold font-normal">0,90%</strong> de los 556.850 ultra-ricos del planeta.</span>
+          <span class="en-text">Panama's ultra-prime eco-resort, designed by <strong class="text-brand-sand font-normal">Denniston Architects</strong> (Jean-Michel Gathy) and operated by the global ultra-luxury standard <strong class="text-brand-sand font-normal">Aman</strong>. Only <strong class="text-brand-gold font-normal">5,000 Executive Memberships</strong> represent <strong class="text-brand-gold font-normal">0.90%</strong> of the planet's 556,850 ultra-wealthy.</span>
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto text-left">
+          <div class="glass-panel p-6 rounded-2xl border-l-2 border-l-brand-gold">
+            <span class="text-xs uppercase tracking-wider text-brand-muted block mb-1"><span class="es-text">Membresía Executive</span><span class="en-text">Executive Membership</span></span>
+            <div class="text-2xl md:text-3xl font-serif text-white font-semibold">$250.000</div>
+            <span class="text-[10px] text-brand-gold mt-1 block font-mono">USD · Equity Directo</span>
+          </div>
+          <div class="glass-panel p-6 rounded-2xl border-l-2 border-l-brand-gold">
+            <span class="text-xs uppercase tracking-wider text-brand-muted block mb-1"><span class="es-text">Retorno Garantizado</span><span class="en-text">Guaranteed Return</span></span>
+            <div class="text-2xl md:text-3xl font-serif text-white font-semibold">4,5%</div>
+            <span class="text-[10px] text-brand-gold mt-1 block font-mono"><span class="es-text">$11.250 USD/año · Aman</span><span class="en-text">$11,250 USD/year · Aman</span></span>
+          </div>
+          <div class="glass-panel p-6 rounded-2xl border-l-2 border-l-brand-gold">
+            <span class="text-xs uppercase tracking-wider text-brand-muted block mb-1"><span class="es-text">Uso Propietario</span><span class="en-text">Owner Use</span></span>
+            <div class="text-2xl md:text-3xl font-serif text-white font-semibold">45 <span class="es-text">Días</span><span class="en-text">Days</span></div>
+            <span class="text-[10px] text-brand-muted mt-1 block font-mono"><span class="es-text">Temporada alta/media libre</span><span class="en-text">Peak/shoulder season free</span></span>
+          </div>
+          <div class="glass-panel p-6 rounded-2xl border-l-2 border-l-brand-gold">
+            <span class="text-xs uppercase tracking-wider text-brand-muted block mb-1"><span class="es-text">Pool Aman</span><span class="en-text">Aman Pool</span></span>
+            <div class="text-2xl md:text-3xl font-serif text-white font-semibold">320 <span class="es-text">Días</span><span class="en-text">Days</span></div>
+            <span class="text-[10px] text-brand-muted mt-1 block font-mono"><span class="es-text">Gestión 100% pasiva</span><span class="en-text">100% passive management</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 1: VISIÓN & EXCLUSIVIDAD -->
+    <section id="vision" class="section-anchor py-24 bg-brand-dark border-t border-b border-brand-border/40">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs uppercase tracking-[0.3em] text-brand-gold font-medium block mb-2">
+            <span class="es-text">La Visión · Exclusividad Cuantificada</span>
+            <span class="en-text">The Vision · Quantified Exclusivity</span>
+          </span>
+          <h2 class="text-4xl font-serif text-white font-light mb-6">
+            <span class="es-text">El <span class="gold-gradient-text italic">0,90%</span> más exclusivo del planeta</span>
+            <span class="en-text">The most exclusive <span class="gold-gradient-text italic">0.90%</span> on the planet</span>
+          </h2>
+          <p class="text-sm text-brand-muted leading-relaxed font-light">
+            <span class="es-text">Isla La Porcada es el primer Mar a Lago del Siglo XXI: un santuario eco-resort de ultra-lujo en Panamá, donde la arquitectura simétrica de Denniston se funde con la hospitalidad discreta de Aman. Sólo 5.000 personas en el mundo podrán poseer una Membresía Executive — el 0,90% de los 556.850 Ultra-High-Net-Worth globales, la cúspide del 1% más rico del planeta.</span>
+            <span class="en-text">Isla La Porcada is the first 21st Century Mar a Lago: an ultra-luxury eco-resort sanctuary in Panama, where Denniston's symmetrical architecture merges with Aman's discreet hospitality. Only 5,000 people in the world can own an Executive Membership — 0.90% of the 556,850 global Ultra-High-Net-Worth, the peak of the planet's top 1%.</span>
+          </p>
+        </div>
+
+        <!-- 3 Stat cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div class="glass-panel p-8 rounded-2xl text-center relative overflow-hidden">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-brand-gold/5 rounded-full blur-2xl"></div>
+            <div class="text-5xl font-serif font-light gold-gradient-text mb-2">3.428</div>
+            <span class="text-xs uppercase tracking-widest text-brand-muted"><span class="es-text">Multimillonarios >$1.000M USD</span><span class="en-text">Billionaires >$1,000M USD</span></span>
+            <p class="text-[10px] text-brand-gold mt-2 font-mono"><span class="es-text">Cúspide absoluta · Censo Forbes 2025</span><span class="en-text">Absolute peak · Forbes Census 2025</span></p>
+          </div>
+          <div class="glass-panel p-8 rounded-2xl text-center relative overflow-hidden border-brand-gold/30">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-brand-gold/10 rounded-full blur-2xl"></div>
+            <div class="text-5xl font-serif font-light gold-gradient-text mb-2">556.850</div>
+            <span class="text-xs uppercase tracking-widest text-brand-muted"><span class="es-text">UHNWI >$30M USD</span><span class="en-text">UHNWI >$30M USD</span></span>
+            <p class="text-[10px] text-brand-gold mt-2 font-mono"><span class="es-text">Universo UHNW global · Knight Frank 2025</span><span class="en-text">Global UHNW universe · Knight Frank 2025</span></p>
+          </div>
+          <div class="glass-panel p-8 rounded-2xl text-center relative overflow-hidden border-2 border-brand-gold/40">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-brand-gold/15 rounded-full blur-2xl"></div>
+            <div class="text-5xl font-serif font-light gold-gradient-text mb-2">0,90%</div>
+            <span class="text-xs uppercase tracking-widest text-brand-muted"><span class="es-text">Universo capturado por La Porcada</span><span class="en-text">Universe captured by La Porcada</span></span>
+            <p class="text-[10px] text-brand-gold mt-2 font-mono"><span class="es-text">5.000 membresías / 556.850 UHNWI</span><span class="en-text">5,000 memberships / 556,850 UHNWI</span></p>
+          </div>
+        </div>
+
+        <!-- Funnel chart -->
+        <div class="glass-panel p-8 rounded-2xl">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-base font-serif text-white"><span class="es-text">Embudo de Exclusividad Global</span><span class="en-text">Global Exclusivity Funnel</span></h3>
+            <span class="text-[10px] font-mono px-3 py-1 bg-brand-gold/10 text-brand-gold border border-brand-gold/30 rounded-full"><span class="es-text">De 3.428 a 5.000</span><span class="en-text">From 3,428 to 5,000</span></span>
+          </div>
+          <div class="h-80 w-full"><canvas id="chartFunnel"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: AMAN × DENNISTON -->
+    <section id="aman-denniston" class="section-anchor py-24 bg-brand-black">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs uppercase tracking-[0.3em] text-brand-gold font-medium block mb-2">
+            <span class="es-text">Sinergia · Diseño &amp; Hospitalidad</span>
+            <span class="en-text">Synergy · Design &amp; Hospitality</span>
+          </span>
+          <h2 class="text-4xl font-serif text-white font-light mb-4">
+            <span class="es-text">Denniston Architecture <span class="gold-gradient-text italic">×</span> Aman Hospitality</span>
+            <span class="en-text">Denniston Architecture <span class="gold-gradient-text italic">×</span> Aman Hospitality</span>
+          </h2>
+          <p class="text-sm text-brand-muted leading-relaxed font-light">
+            <span class="es-text">La visión conceptual de Jean-Michel Gathy (Denniston) encuentra su complemento perfecto en el estándar de hospitalidad discreta más exclusivo del mundo. Una sinergia insuperable.</span>
+            <span class="en-text">The conceptual vision of Jean-Michel Gathy (Denniston) finds its perfect complement in the world's most exclusive discreet hospitality standard. An unmatched synergy.</span>
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="glass-panel p-8 rounded-2xl hover:border-brand-gold/40 transition group">
+            <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold mb-6 group-hover:scale-110 transition"><i data-lucide="compass" class="w-6 h-6"></i></div>
+            <h3 class="text-xl font-serif text-white mb-3"><span class="es-text">Diseño Jean-Michel Gathy</span><span class="en-text">Jean-Michel Gathy Design</span></h3>
+            <p class="text-xs text-brand-muted leading-relaxed font-light mb-4">
+              <span class="es-text">Pabellones simétricos, reflejos acuáticos monumentales y proporciones que perduran décadas. Cada residencia es una obra de arte viva que revaloriza con el tiempo.</span>
+              <span class="en-text">Symmetrical pavilions, monumental water reflections and proportions that endure decades. Each residence is a living work of art that appreciates over time.</span>
+            </p>
+            <ul class="text-xs text-brand-sand space-y-2 font-mono">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold"></i> <span class="es-text">Pabellones simétricos</span><span class="en-text">Symmetrical pavilions</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold"></i> <span class="es-text">Infinity pool 35 metros</span><span class="en-text">35-meter infinity pool</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold"></i> <span class="es-text">Materiales sostenibles premium</span><span class="en-text">Premium sustainable materials</span></li>
+            </ul>
+          </div>
+          <div class="glass-panel p-8 rounded-2xl hover:border-brand-gold/40 transition group">
+            <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold mb-6 group-hover:scale-110 transition"><i data-lucide="concierge-bell" class="w-6 h-6"></i></div>
+            <h3 class="text-xl font-serif text-white mb-3"><span class="es-text">Servicio Integrado Aman</span><span class="en-text">Aman Integrated Service</span></h3>
+            <p class="text-xs text-brand-muted leading-relaxed font-light mb-4">
+              <span class="es-text">Mayordomía privada 24/7, chef personal y acceso total al resort durante los 45 días de uso anual, sin preocupaciones logísticas ni de personal.</span>
+              <span class="en-text">Private butler 24/7, personal chef and full resort access during the 45 annual use days, with no logistical or staffing concerns.</span>
+            </p>
+            <ul class="text-xs text-brand-sand space-y-2 font-mono">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold"></i> <span class="es-text">Chef privado &amp; Sommelier</span><span class="en-text">Private chef &amp; Sommelier</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold"></i> <span class="es-text">Ratio 4 empleados/villa</span><span class="en-text">4 staff per villa ratio</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold"></i> <span class="es-text">Aman Club Global access</span><span class="en-text">Aman Club Global access</span></li>
+            </ul>
+          </div>
+          <div class="glass-panel p-8 rounded-2xl hover:border-brand-gold/40 transition group">
+            <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold mb-6 group-hover:scale-110 transition"><i data-lucide="trending-up" class="w-6 h-6"></i></div>
+            <h3 class="text-xl font-serif text-white mb-3"><span class="es-text">Pool Hotelero Rendimiento</span><span class="en-text">Hotel Pool Performance</span></h3>
+            <p class="text-xs text-brand-muted leading-relaxed font-light mb-4">
+              <span class="es-text">Durante los 320 días en pool Aman, las tarifas nocturnas (ADR) superiores a $12.000 USD respaldan el flujo de renta garantizada del 4,5% anual.</span>
+              <span class="en-text">During the 320 days in Aman pool, nightly rates (ADR) above $12,000 USD back the 4.5% annual guaranteed rental flow.</span>
+            </p>
+            <ul class="text-xs text-brand-sand space-y-2 font-mono">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold"></i> <span class="es-text">4,5% fijo garantizado</span><span class="en-text">4.5% fixed guaranteed</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold"></i> <span class="es-text">Cero gastos HOA</span><span class="en-text">Zero HOA expenses</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-gold"></i> <span class="es-text">Auditoría Big Four</span><span class="en-text">Big Four audit</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: MEMBRESÍA + SIMULATOR -->
+    <section id="membership" class="section-anchor py-24 bg-brand-dark border-t border-b border-brand-border/40">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs uppercase tracking-[0.3em] text-brand-gold font-medium block mb-2">
+            <span class="es-text">Membresía Executive · $250.000 USD</span>
+            <span class="en-text">Executive Membership · $250,000 USD</span>
+          </span>
+          <h2 class="text-4xl font-serif text-white font-light mb-4">
+            <span class="es-text">Calculadora ROI <span class="gold-gradient-text italic">Patrimonial</span></span>
+            <span class="en-text">Patrimonial <span class="gold-gradient-text italic">ROI</span> Calculator</span>
+          </h2>
+          <p class="text-sm text-brand-muted leading-relaxed font-light">
+            <span class="es-text">Ajuste los parámetros para evaluar el comportamiento del activo: plusvalía inmobiliaria del eco-resort + dividendos indexados al rendimiento Aman del 4,5%.</span>
+            <span class="en-text">Adjust the parameters to evaluate the asset's behavior: eco-resort property appreciation + dividends indexed to Aman's 4.5% yield.</span>
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 glass-panel p-8 rounded-2xl space-y-6">
+            <h3 class="text-lg font-serif text-white border-b border-brand-border/60 pb-4 flex justify-between items-center">
+              <span class="es-text">Parámetros Membresía</span>
+              <span class="en-text">Membership Parameters</span>
+              <i data-lucide="sliders" class="w-4 h-4 text-brand-gold"></i>
+            </h3>
+            <div>
+              <div class="flex justify-between text-xs mb-2">
+                <span class="text-brand-muted"><span class="es-text">Tier de Membresía</span><span class="en-text">Membership Tier</span></span>
+                <span class="font-mono text-brand-gold font-medium" id="m_valInitial">$250.000 USD</span>
+              </div>
+              <input type="range" id="m_inputInitial" min="150000" max="500000" step="10000" value="250000" class="w-full h-1.5 bg-brand-border rounded-lg appearance-none cursor-pointer" oninput="updateSim()">
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-2">
+                <span class="text-brand-muted"><span class="es-text">Plusvalía Anual (%)</span><span class="en-text">Annual Appreciation (%)</span></span>
+                <span class="font-mono text-brand-gold font-medium" id="m_valAppreciation">3,0%</span>
+              </div>
+              <input type="range" id="m_inputAppreciation" min="0" max="8" step="0.25" value="3" class="w-full h-1.5 bg-brand-border rounded-lg appearance-none cursor-pointer" oninput="updateSim()">
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-2">
+                <span class="text-brand-muted"><span class="es-text">Dividendos Miembros (%)</span><span class="en-text">Member Dividends (%)</span></span>
+                <span class="font-mono text-brand-gold font-medium" id="m_valDividend">1,5%</span>
+              </div>
+              <input type="range" id="m_inputDividend" min="0" max="3" step="0.25" value="1.5" class="w-full h-1.5 bg-brand-border rounded-lg appearance-none cursor-pointer" oninput="updateSim()">
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-2">
+                <span class="text-brand-muted"><span class="es-text">Horizonte Temporal</span><span class="en-text">Time Horizon</span></span>
+                <span class="font-mono text-brand-gold font-medium" id="m_valYears">10 <span class="es-text">Años</span><span class="en-text">Years</span></span>
+              </div>
+              <input type="range" id="m_inputYears" min="1" max="20" step="1" value="10" class="w-full h-1.5 bg-brand-border rounded-lg appearance-none cursor-pointer" oninput="updateSim()">
+            </div>
+            <div class="pt-4 border-t border-brand-border/60 grid grid-cols-2 gap-4">
+              <div class="bg-brand-black/60 p-4 rounded-xl">
+                <span class="text-[10px] text-brand-muted uppercase tracking-wider block"><span class="es-text">Dividendos Acumulados</span><span class="en-text">Accumulated Dividends</span></span>
+                <div class="text-lg font-serif text-white font-semibold mt-1" id="m_kpiDividends">$37.500</div>
+              </div>
+              <div class="bg-brand-black/60 p-4 rounded-xl">
+                <span class="text-[10px] text-brand-muted uppercase tracking-wider block"><span class="es-text">Valor Proyectado</span><span class="en-text">Projected Value</span></span>
+                <div class="text-lg font-serif text-brand-gold font-semibold mt-1" id="m_kpiFuture">$335.979</div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-7 glass-panel p-8 rounded-2xl">
+            <div class="flex justify-between items-center mb-6">
+              <h3 class="text-base font-serif text-white"><span class="es-text">Evolución Patrimonio Membresía</span><span class="en-text">Membership Wealth Evolution</span></h3>
+              <span class="text-[10px] font-mono px-3 py-1 bg-brand-gold/10 text-brand-gold border border-brand-gold/30 rounded-full"><span class="es-text">Proyección Compuesta</span><span class="en-text">Compound Projection</span></span>
+            </div>
+            <div class="h-80 w-full"><canvas id="m_chart"></canvas></div>
+            <p class="text-[11px] text-brand-muted mt-4 text-center font-light">
+              <span class="es-text">*Combina plusvalía inmobiliaria del eco-resort + dividendos indexados a la rentabilidad Aman del 4,5%.</span>
+              <span class="en-text">*Combines eco-resort property appreciation + dividends indexed to Aman's 4.5% yield.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: COMISIÓN -->
+    <section id="partnership" class="section-anchor py-24 bg-brand-black">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-10">
+          <span class="text-xs uppercase tracking-[0.3em] text-brand-gold font-medium block mb-2">
+            <span class="es-text">Partnership para Family Offices &amp; Banqueros</span>
+            <span class="en-text">Partnership for Family Offices &amp; Bankers</span>
+          </span>
+          <h2 class="text-4xl font-serif text-white font-light mb-4">
+            <span class="es-text">$50.000 USD por <span class="gold-gradient-text italic">cada cierre</span></span>
+            <span class="en-text">$50,000 USD per <span class="gold-gradient-text italic">every closing</span></span>
+          </h2>
+        </div>
+        <div class="glass-strong p-8 rounded-2xl border border-brand-gold/30 relative overflow-hidden">
+          <div class="absolute -top-12 -right-12 w-48 h-48 bg-brand-gold/10 rounded-full blur-3xl"></div>
+          <div class="text-xs font-mono text-brand-gold uppercase tracking-widest mb-2">
+            <span class="es-text">Estructura única · Sin escalones · Pagos automatizados</span>
+            <span class="en-text">Single structure · No tiers · Automated payouts</span>
+          </div>
+          <h3 class="text-2xl font-serif text-white mb-4">
+            <span class="es-text">Cada Membresía Executive cerrada = $50.000 USD netos al intermediario</span>
+            <span class="en-text">Each closed Executive Membership = $50,000 USD net to the intermediary</span>
+          </h3>
+          <div class="text-4xl font-serif italic gold-gradient-text my-8 py-4 border-t border-b border-brand-gold/20 text-center">$250.000 × 20% = $50.000 USD</div>
+          <p class="text-sm text-brand-muted leading-relaxed font-light">
+            <span class="es-text">La comisión del <strong class="text-brand-sand font-normal">20%</strong> se libera de forma <strong class="text-brand-sand font-normal">automática y simultánea</strong> al desembolso del 10% inicial del cliente al fideicomiso panameño (Ley 1/84). Pago a cuenta segregada designada previamente en el Sale &amp; Purchase Agreement. Sin período de retención, sin cláusulas de clawback: la comisión se gana al cierre y se paga al cierre.</span>
+            <span class="en-text">The <strong class="text-brand-sand font-normal">20%</strong> commission is released <strong class="text-brand-sand font-normal">automatically and simultaneously</strong> upon the client's 10% initial deposit into the Panamanian trust (Law 1/84). Payment to segregated account previously designated in the Sale &amp; Purchase Agreement. No retention period, no clawback clauses: the commission is earned at closing and paid at closing.</span>
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+            <div class="bg-brand-black/60 p-4 rounded-xl text-center">
+              <i data-lucide="zap" class="w-5 h-5 text-brand-gold mx-auto mb-2"></i>
+              <span class="text-xs text-brand-sand font-serif"><span class="es-text">Liberación Automática</span><span class="en-text">Automatic Release</span></span>
+            </div>
+            <div class="bg-brand-black/60 p-4 rounded-xl text-center">
+              <i data-lucide="shield" class="w-5 h-5 text-brand-gold mx-auto mb-2"></i>
+              <span class="text-xs text-brand-sand font-serif"><span class="es-text">Cuenta Segregada</span><span class="en-text">Segregated Account</span></span>
+            </div>
+            <div class="bg-brand-black/60 p-4 rounded-xl text-center">
+              <i data-lucide="x-circle" class="w-5 h-5 text-brand-gold mx-auto mb-2"></i>
+              <span class="text-xs text-brand-sand font-serif"><span class="es-text">Sin Clawback</span><span class="en-text">No Clawback</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: SPV -->
+    <section id="spv" class="section-anchor py-24 bg-brand-dark border-t border-b border-brand-border/40">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs uppercase tracking-[0.3em] text-brand-gold font-medium block mb-2">
+            <span class="es-text">Estructuración Patrimonial UHNWI</span>
+            <span class="en-text">UHNWI Wealth Structuring</span>
+          </span>
+          <h2 class="text-4xl font-serif text-white font-light mb-4">
+            <span class="es-text">SPV &amp; <span class="gold-gradient-text italic">Fideicomiso Ley 1/84</span></span>
+            <span class="en-text">SPV &amp; <span class="gold-gradient-text italic">Trust Law 1/84</span></span>
+          </h2>
+          <p class="text-sm text-brand-muted leading-relaxed font-light">
+            <span class="es-text">Transmisión mediante transferencia de acciones de una SPV internacional · confidencialidad absoluta · minimización fiscal · gobernanza familiar simplificada.</span>
+            <span class="en-text">Transfer via international SPV share assignment · absolute confidentiality · tax minimization · simplified family governance.</span>
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4">
+            <div class="p-4 rounded-xl bg-brand-card/50 border border-brand-border/60 flex items-start gap-4">
+              <div class="p-2 rounded-lg bg-brand-gold/10 text-brand-gold mt-1"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+              <div>
+                <h4 class="text-sm font-serif text-white"><span class="es-text">Privacidad &amp; Protocolo Familiar</span><span class="en-text">Privacy &amp; Family Protocol</span></h4>
+                <p class="text-xs text-brand-muted mt-1 font-light"><span class="es-text">Compatibilidad total con Trusts, Fundaciones Privadas y Single-Family Offices.</span><span class="en-text">Full compatibility with Trusts, Private Foundations and Single-Family Offices.</span></p>
+              </div>
+            </div>
+            <div class="p-4 rounded-xl bg-brand-card/50 border border-brand-border/60 flex items-start gap-4">
+              <div class="p-2 rounded-lg bg-brand-gold/10 text-brand-gold mt-1"><i data-lucide="coins" class="w-5 h-5"></i></div>
+              <div>
+                <h4 class="text-sm font-serif text-white"><span class="es-text">Repatriación de Dividendos (4,5%)</span><span class="en-text">Dividend Repatriation (4.5%)</span></h4>
+                <p class="text-xs text-brand-muted mt-1 font-light"><span class="es-text">Estructura tributaria optimizada para la recepción trimestral del rendimiento Aman.</span><span class="en-text">Optimized tax structure for quarterly reception of Aman yield.</span></p>
+              </div>
+            </div>
+            <div class="p-4 rounded-xl bg-brand-card/50 border border-brand-border/60 flex items-start gap-4">
+              <div class="p-2 rounded-lg bg-brand-gold/10 text-brand-gold mt-1"><i data-lucide="file-text" class="w-5 h-5"></i></div>
+              <div>
+                <h4 class="text-sm font-serif text-white"><span class="es-text">Due Diligence Completado</span><span class="en-text">Due Diligence Completed</span></h4>
+                <p class="text-xs text-brand-muted mt-1 font-light"><span class="es-text">Títulos, licencias turísticas y auditoría Aman disponibles tras NDA.</span><span class="en-text">Titles, tourism licenses and Aman audit available after NDA.</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="glass-panel p-8 rounded-2xl border border-brand-gold/20">
+            <div class="text-xs font-mono text-brand-gold uppercase tracking-widest mb-6 text-center"><span class="es-text">Estructura de la Operación</span><span class="en-text">Operation Structure</span></div>
+            <div class="space-y-4">
+              <div class="p-4 rounded-xl bg-brand-black border border-brand-border text-center">
+                <span class="text-[10px] text-brand-muted block uppercase"><span class="es-text">Inversor / Family Office</span><span class="en-text">Investor / Family Office</span></span>
+                <div class="text-sm font-serif text-white font-medium mt-0.5"><span class="es-text">Holding / Trust Internacional</span><span class="en-text">International Holding / Trust</span></div>
+              </div>
+              <div class="flex justify-center text-brand-gold"><i data-lucide="arrow-down" class="w-5 h-5 animate-bounce"></i></div>
+              <div class="p-4 rounded-xl bg-brand-gold/10 border border-brand-gold/40 text-center">
+                <span class="text-[10px] text-brand-gold block uppercase font-medium"><span class="es-text">Vehículo Exclusivo</span><span class="en-text">Exclusive Vehicle</span></span>
+                <div class="text-base font-serif text-white font-semibold mt-0.5">SPV Propietaria · Membresía $250k</div>
+              </div>
+              <div class="flex justify-center text-brand-gold"><i data-lucide="arrow-down" class="w-5 h-5 animate-bounce"></i></div>
+              <div class="p-4 rounded-xl bg-brand-burgundy/15 border border-brand-burgundy/40 text-center">
+                <span class="text-[10px] block uppercase font-medium" style="color:#c67890"><span class="es-text">Fideicomiso Panamá</span><span class="en-text">Panama Trust</span></span>
+                <div class="text-sm font-serif text-white font-semibold mt-0.5">Ley 1/84 · Cuenta Segregada</div>
+              </div>
+              <div class="grid grid-cols-2 gap-3 mt-3">
+                <div class="p-3 rounded-lg bg-brand-black/60 border border-brand-border text-center">
+                  <span class="text-[9px] text-brand-muted block"><span class="es-text">Garantía Flujo</span><span class="en-text">Flow Guarantee</span></span>
+                  <span class="text-xs font-serif text-brand-sand">4,5% Aman Yield</span>
+                </div>
+                <div class="p-3 rounded-lg bg-brand-black/60 border border-brand-border text-center">
+                  <span class="text-[9px] text-brand-muted block"><span class="es-text">Operador Resort</span><span class="en-text">Resort Operator</span></span>
+                  <span class="text-xs font-serif text-brand-sand">Aman Management</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 6: NDA FORM -->
+    <section id="nda" class="section-anchor py-24 bg-brand-black">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="glass-strong p-8 md:p-12 rounded-3xl border border-brand-gold/30 shadow-2xl relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="text-center mb-10">
+            <span class="text-xs uppercase tracking-[0.3em] text-brand-gold font-medium block mb-2"><span class="es-text">Acceso Reservado</span><span class="en-text">Restricted Access</span></span>
+            <h2 class="text-3xl md:text-4xl font-serif text-white font-light mb-3"><span class="es-text">Solicitar Memorandum &amp; NDA Privado</span><span class="en-text">Request Memorandum &amp; Private NDA</span></h2>
+            <p class="text-xs text-brand-muted font-light max-w-lg mx-auto">
+              <span class="es-text">Complete el formulario para recibir el dossier completo de due diligence y coordinar una presentación confidencial con nuestro Wealth Advisory.</span>
+              <span class="en-text">Complete the form to receive the full due diligence dossier and schedule a confidential presentation with our Wealth Advisory.</span>
+            </p>
+          </div>
+          <form id="ndaForm" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-brand-muted mb-2"><span class="es-text">Nombre Completo / Representante</span><span class="en-text">Full Name / Representative</span></label>
+                <input type="text" required placeholder="Lord / Dr. / Sr. Alexander Wright" class="w-full px-4 py-3 bg-brand-black border border-brand-border rounded-xl text-white text-sm focus:outline-none focus:border-brand-gold">
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-brand-muted mb-2"><span class="es-text">Family Office / Entidad</span><span class="en-text">Family Office / Entity</span></label>
+                <input type="text" required placeholder="Wright Capital Management" class="w-full px-4 py-3 bg-brand-black border border-brand-border rounded-xl text-white text-sm focus:outline-none focus:border-brand-gold">
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-brand-muted mb-2"><span class="es-text">Correo Corporativo</span><span class="en-text">Corporate Email</span></label>
+                <input type="email" required placeholder="v.wright@wrightfamilyoffice.com" class="w-full px-4 py-3 bg-brand-black border border-brand-border rounded-xl text-white text-sm focus:outline-none focus:border-brand-gold">
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-brand-muted mb-2"><span class="es-text">Perfil Inversor</span><span class="en-text">Investor Profile</span></label>
+                <select class="w-full px-4 py-3 bg-brand-black border border-brand-border rounded-xl text-white text-sm focus:outline-none focus:border-brand-gold">
+                  <option>Single Family Office (SFO)</option>
+                  <option>Multi-Family Office (MFO)</option>
+                  <option>UHNWI (Private Investor)</option>
+                  <option>Private Banking / Advisor</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-brand-muted mb-2"><span class="es-text">Comentarios / Requerimientos</span><span class="en-text">Comments / Requirements</span></label>
+              <textarea rows="3" placeholder="Indique si requiere visita al emplazamiento en aviación privada o estructuración SPV..." class="w-full px-4 py-3 bg-brand-black border border-brand-border rounded-xl text-white text-sm focus:outline-none focus:border-brand-gold"></textarea>
+            </div>
+            <div class="flex items-center gap-3">
+              <input type="checkbox" id="ndaConsent" required class="rounded border-brand-border bg-brand-black text-brand-gold focus:ring-brand-gold">
+              <label for="ndaConsent" class="text-xs text-brand-muted font-light"><span class="es-text">Acepto los términos de confidencialidad y la emisión del acuerdo NCNDA.</span><span class="en-text">I accept the confidentiality terms and the issuance of the NCNDA agreement.</span></label>
+            </div>
+            <button type="submit" class="w-full py-4 bg-gradient-to-r from-brand-gold via-brand-goldLight to-brand-goldDark text-black font-medium text-sm tracking-widest uppercase rounded-xl hover:opacity-90 transition shadow-xl shadow-brand-gold/10">
+              <span class="es-text">Solicitar Memorandum Privado</span>
+              <span class="en-text">Request Private Memorandum</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-brand-black border-t border-brand-border/40 text-xs text-brand-muted">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="images/logo.png" alt="La Porcada" class="w-7 h-7 rounded-full object-cover border border-brand-gold/40">
+          <span class="font-serif text-white tracking-wide">Ecoresort la Porcada by Aman · Denniston Architecture</span>
+        </div>
+        <div><span class="es-text">Confidencial · Solo distribución privada off-market</span><span class="en-text">Confidential · Private off-market distribution only</span></div>
+        <div><strong class="text-brand-gold">Copyright © 2026</strong> · Ecoresort la Porcada · by · <strong class="text-brand-gold">Takyma Investment Pioneer</strong></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- MODAL ÉXITO NDA -->
+  <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-500">
+    <div class="max-w-md w-full mx-4 p-8 glass-strong rounded-2xl text-center border border-brand-gold/40 shadow-2xl">
+      <div class="inline-flex p-3 rounded-full bg-brand-gold/10 text-brand-gold mb-4"><i data-lucide="check-circle" class="w-8 h-8"></i></div>
+      <h3 class="text-2xl font-serif text-white mb-2"><span class="es-text">Solicitud Recibida</span><span class="en-text">Request Received</span></h3>
+      <p class="text-xs text-brand-muted leading-relaxed mb-6 font-light">
+        <span class="es-text">Hemos registrado su petición de memorandum off-market. Un Senior Partner de Wealth Advisory contactará con su Family Office en las próximas 24 horas.</span>
+        <span class="en-text">We have registered your off-market memorandum request. A Wealth Advisory Senior Partner will contact your Family Office within the next 24 hours.</span>
+      </p>
+      <button onclick="closeSuccessModal()" class="w-full py-3 bg-brand-gold text-black font-medium text-xs uppercase tracking-widest rounded-xl hover:bg-brand-goldLight transition">
+        <span class="es-text">Cerrar Confirmación</span><span class="en-text">Close Confirmation</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+    const C = { gold:'#D4AF37', goldLight:'#F3E5AB', goldDark:'#997A15', navy:'#0A0B0D', navyLight:'#181A20', sand:'#E6DFD5', muted:'#8E95A5', burgundy:'#6b1f2a', ok:'#234e35', accent:'#92761f', border:'#2A2D36' };
+    Chart.defaults.color = '#8E95A5';
+    Chart.defaults.font.family = "'Inter', sans-serif";
+
+    const i18n = {
+      es: {
+        funnelLabels: ['Multimillonarios >$1B', 'UHNWI >$30M', 'Family Offices', 'Membresías La Porcada'],
+        funnelTip: 'Personas en el mundo',
+        simLabels: { propValue:'Valor Membresía (Plusvalía)', divFlow:'Dividendos Acumulados' }
+      },
+      en: {
+        funnelLabels: ['Billionaires >$1B', 'UHNWI >$30M', 'Family Offices', 'La Porcada Memberships'],
+        funnelTip: 'People in the world',
+        simLabels: { propValue:'Membership Value (Appreciation)', divFlow:'Accumulated Dividends' }
+      }
+    };
+    let currentLang = 'es';
+
+    function fmtUSD(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+    function fmtES(n) { return '$' + Math.round(n).toLocaleString('es-ES').replace(',', '.'); }
+
+    // === PASSCODE UNLOCK ===
+    document.getElementById('accessForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const code = document.getElementById('passcode').value.trim();
+      if (code !== '') {
+        const m = document.getElementById('accessModal');
+        const mc = document.getElementById('mainContent');
+        m.classList.add('opacity-0');
+        setTimeout(() => { m.style.display = 'none'; mc.classList.remove('opacity-0'); initCharts(); }, 700);
+      }
+    });
+    function fillDemoCode() { document.getElementById('passcode').value = 'PORCADA2026'; }
+
+    // === MEMBERSHIP SIMULATOR ===
+    let mChart, funnelChart;
+    function updateSim() {
+      const initial = +document.getElementById('m_inputInitial').value;
+      const appr = +document.getElementById('m_inputAppreciation').value / 100;
+      const div = +document.getElementById('m_inputDividend').value / 100;
+      const years = +document.getElementById('m_inputYears').value;
+      document.getElementById('m_valInitial').innerText = fmtUSD(initial) + ' USD';
+      document.getElementById('m_valAppreciation').innerText = (appr*100).toFixed(2).replace('.',',')+'%';
+      document.getElementById('m_valDividend').innerText = (div*100).toFixed(2).replace('.',',')+'%';
+      document.getElementById('m_valYears').innerHTML = years + ' <span class="es-text">Años</span><span class="en-text">Years</span>';
+      const annualDiv = initial * div;
+      const totalDiv = annualDiv * years;
+      const futureVal = initial * Math.pow(1+appr, years);
+      document.getElementById('m_kpiDividends').innerText = fmtES(totalDiv);
+      document.getElementById('m_kpiFuture').innerText = fmtES(futureVal);
+      const labels=[], propData=[], divData=[];
+      for (let i=0; i<=years; i++) { labels.push((currentLang==='en'?'Year ':'Año ')+i); propData.push(initial*Math.pow(1+appr,i)); divData.push(annualDiv*i); }
+      if (mChart) {
+        mChart.data.labels = labels;
+        mChart.data.datasets[0].data = propData;
+        mChart.data.datasets[0].label = i18n[currentLang].simLabels.propValue;
+        mChart.data.datasets[1].data = divData;
+        mChart.data.datasets[1].label = i18n[currentLang].simLabels.divFlow;
+        mChart.update('none');
+      }
+    }
+
+    function initCharts() {
+      // FUNNEL
+      const ctxF = document.getElementById('chartFunnel').getContext('2d');
+      funnelChart = new Chart(ctxF, {
+        type: 'bar',
+        data: { labels: i18n.es.funnelLabels, datasets: [{
+          label: i18n.es.funnelTip,
+          data: [3428, 556850, 8000, 5000],
+          backgroundColor: [C.burgundy, C.gold, C.accent, C.ok],
+          borderRadius: 6
+        }]},
+        options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ' ' + i18n[currentLang].funnelTip + ': ' + c.raw.toLocaleString('es-ES') } } },
+          scales: { x: { type:'logarithmic', grid: { color: 'rgba(42,45,54,0.4)' }, ticks: { color: C.muted, callback: v => v >= 1000 ? (v/1000)+'k' : v } },
+                    y: { grid: { display: false }, ticks: { color: C.sand, font: { size: 12 } }, afterFit: s => s.width = 220 } }
+        }
+      });
+
+      // MEMBERSHIP CHART
+      const ctxM = document.getElementById('m_chart').getContext('2d');
+      mChart = new Chart(ctxM, {
+        type: 'line',
+        data: { labels: [], datasets: [
+          { label: i18n.es.simLabels.propValue, data: [], borderColor: C.gold, backgroundColor: 'rgba(212,175,55,0.08)', fill: true, tension: 0.35, borderWidth: 2.5 },
+          { label: i18n.es.simLabels.divFlow, data: [], borderColor: C.sand, borderDash: [5,5], backgroundColor: 'transparent', fill: false, tension: 0, borderWidth: 1.5 }
+        ]},
+        options: { responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: C.sand, font: { size: 11 } } }, tooltip: { callbacks: { label: c => ' ' + c.dataset.label + ': ' + fmtES(c.raw) } } },
+          scales: { x: { grid: { color: 'rgba(42,45,54,0.5)' }, ticks: { color: C.muted, font: { size: 10 } } },
+                    y: { grid: { color: 'rgba(42,45,54,0.5)' }, ticks: { color: C.muted, font: { size: 10 }, callback: v => '$' + (v/1000).toFixed(0) + 'k' } } }
+        }
+      });
+      updateSim();
+    }
+
+    // === TOGGLE BILINGÜE ===
+    const langButtons = document.querySelectorAll('.lang-toggle button');
+    function applyLanguage(lang) {
+      currentLang = lang;
+      document.body.classList.remove('lang-es','lang-en');
+      document.body.classList.add('lang-'+lang);
+      document.documentElement.setAttribute('lang', lang);
+      langButtons.forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === lang);
+        b.classList.toggle('text-brand-muted', b.dataset.lang !== lang);
+      });
+      const t = i18n[lang];
+      if (funnelChart) { funnelChart.data.labels = t.funnelLabels; funnelChart.update('none'); }
+      if (mChart) updateSim();
+    }
+    langButtons.forEach(btn => btn.addEventListener('click', () => applyLanguage(btn.dataset.lang)));
+
+    // === PRINT ===
+    document.getElementById('btnPrint').addEventListener('click', () => {
+      const locale = currentLang === 'en' ? 'en-GB' : 'es-ES';
+      const now = new Date();
+      document.getElementById('printDate').textContent = ' ' + now.toLocaleDateString(locale, { day:'2-digit', month:'long', year:'numeric' });
+      const allCharts = [funnelChart, mChart].filter(Boolean);
+      allCharts.forEach(c => { try { c.resize(); } catch(e){} });
+      setTimeout(() => { window.print(); setTimeout(() => allCharts.forEach(c => { try{c.resize();}catch(e){} }), 300); }, 350);
+    });
+    window.addEventListener('beforeprint', () => { [funnelChart, mChart].filter(Boolean).forEach(c => { try{c.resize();}catch(e){} }); });
+    window.addEventListener('afterprint', () => { [funnelChart, mChart].filter(Boolean).forEach(c => { try{c.resize();}catch(e){} }); });
+
+    // === NDA FORM ===
+    document.getElementById('ndaForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const m = document.getElementById('successModal');
+      m.classList.remove('hidden');
+      setTimeout(() => m.classList.remove('opacity-0'), 50);
+    });
+    function closeSuccessModal() {
+      const m = document.getElementById('successModal');
+      m.classList.add('opacity-0');
+      setTimeout(() => m.classList.add('hidden'), 500);
+    }
+  </script>
+</body>
+</html>
